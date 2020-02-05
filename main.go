@@ -36,13 +36,4 @@ func find(elements []int, predicate func(int) bool) int {
 }
 
 func main() {
-	value := []int{1, 2, 3, 4}
-	err := find(value, func(i int) bool {
-		return true
-	})
-	nil := 0
-	if !(err != nil) {
-		panic("Error: did not find anything")
-	}
-
 }
