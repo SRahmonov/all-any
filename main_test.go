@@ -28,7 +28,6 @@ func Test_index(t *testing.T) {
 		}
 	}
 }
-
 func Test_any(t *testing.T) {
 	tests := []struct {
 		name      string
