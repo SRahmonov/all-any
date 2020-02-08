@@ -100,7 +100,7 @@ func Test_all(t *testing.T) {
 	}
 	for _, tt := range tests {
 		if got := all(tt.elements, tt.predicate); got != tt.want {
-			t.Errorf("all() = %v, want %v", got, tt.want)
+			t.Errorf("Test for %v all() = %v, want %v", tt.name, got, tt.want)
 		}
 	}
 }
