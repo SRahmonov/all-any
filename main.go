@@ -1,5 +1,9 @@
 package main
 
+import (
+	"fmt"
+	"go/token"
+)
 
 func index(elements []int, predicate func(int) bool) int {
 	for ind, element := range elements {
@@ -36,4 +40,7 @@ func find(elements []int, predicate func(int) bool) int {
 }
 
 func main() {
+	 fmt.Scanf()
 }
+
+
