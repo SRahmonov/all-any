@@ -91,11 +91,11 @@ func Test_all(t *testing.T) {
 		want      bool
 		predicate func(int) bool
 	}{
-		{"All elem is true", []int{1, 2, 3, 4}, true, func(i int) bool {
-			if i == 1 {
-				return true
-			}
-			return false
+		{"All elem is true", []int{4,4,4,4}, true, func(i int) bool {
+			return i == 4
+		}},
+		{"All elem is false",[]int{1,2,3,4,5,6,7,8},false, func(i int) bool {
+				return i == 8
 		}},
 	}
 	for _, tt := range tests {
@@ -104,26 +104,35 @@ func Test_all(t *testing.T) {
 		}
 	}
 }
+func TestFind(t *testing.T) {
 
-func Test_find(t *testing.T) {
-	tests := []struct {
-		name      string
-		elements  []int
-		want      int
-		predicate func(int) bool
-	}{
-		{"Found elem", []int{1, 2, 3, 4}, 2, func(i int) bool {
-			if i == 2 {
-				return true
+	if find([]int{1, 2, 3, 4, 5}, func(i int) bool {
+		return i == 2
+	}) != 2 {
+		t.Error("...")
+	}
+	func() {
+		defer func() {
+			err := recover()
+			if err == nil {
+				t.Error("panic!")
 			}
-			return false
-		}},
-	}
+		}()
+		find([]int{1, 2, 3}, func(i int) bool {
+			return i == 6
+		})
+	}()
+	func() {
+		defer func() {
+			err := recover()
+			if err == nil {
+				t.Error("panic")
+			}
+		}()
+		find([]int{1, 2, 3}, func(i int) bool {
+			return i == -1
+		})
+	}()
 
-	for _, tt := range tests {
-		if got := find(tt.elements, tt.predicate); got != tt.want {
-			t.Errorf("all() = %v, want %v", got, tt.want)
-		}
-	}
 }
 
